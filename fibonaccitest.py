@@ -1,32 +1,44 @@
-# Fibonacci sequence generator
+# Elegant Fibonacci sequence generator and summation
 
-# Function to generate Fibonacci numbers up to n terms
 def fibonacci(n):
-    a, b = 0, 1
-    sequence = []
-    
-    for _ in range(n):
-        sequence.append(a)
-        a, b = b, a + b
-        
-    return sequence
+    """
+    Generates the first n Fibonacci numbers.
 
-# Function to add all integers in a Fibonacci list
+    Parameters:
+    n (int): The number of Fibonacci numbers to generate.
+
+    Returns:
+    list: A list of the first n Fibonacci numbers.
+    """
+    sequence = [0, 1]
+    for _ in range(2, n):
+        sequence.append(sequence[-1] + sequence[-2])
+    return sequence[:n]
+
 def add_fibonacci(fibonacci_list):
+    """
+    Sums all integers in the given Fibonacci list.
 
+    Parameters:
+    fibonacci_list (list): A list of Fibonacci numbers.
+
+    Returns:
+    int: The sum of all Fibonacci numbers in the list.
+    """
     return sum(fibonacci_list)
 
-# Input: how many terms to generate
-terms = int(input("Enter the number of terms in the Fibonacci sequence: "))
-
-# Ensure the input is valid
-if terms <= 0:
-    print("Please enter a positive integer.")
-else:
-    # Call the function and display the sequence
-    print(f"Fibonacci sequence up to {terms} terms:")
-    print(fibonacci(terms))
-    
-    fibonacci_list = fibonacci(terms)
-    result = add_fibonacci(fibonacci_list)
-    print(f"Here is the summed list of all Fibonacci numbers: {result} ")
+if __name__ == "__main__":
+    # Input: how many terms to generate
+    try:
+        terms = int(input("Enter the number of terms in the Fibonacci sequence: "))
+        if terms <= 0:
+            print("Please enter a positive integer.")
+        else:
+            # Generate and display the Fibonacci sequence
+            fibonacci_list = fibonacci(terms)
+            print(f"Fibonacci sequence up to {terms} terms: {fibonacci_list}")
+            # Sum and display the result
+            result = add_fibonacci(fibonacci_list)
+            print(f"Sum of the Fibonacci sequence: {result}")
+    except ValueError:
+        print("Invalid input. Please enter a valid integer.")

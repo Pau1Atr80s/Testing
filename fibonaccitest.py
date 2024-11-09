@@ -30,7 +30,6 @@ def add_fibonacci(fibonacci_list):
     return sum(fibonacci_list)
 
 if __name__ == "__main__":
-    import webbrowser
 
     # Input: how many terms to generate
     try:

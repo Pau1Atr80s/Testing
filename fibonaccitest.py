@@ -1,3 +1,5 @@
+import webbrowser
+
 # Elegant Fibonacci sequence generator and summation
 
 def fibonacci(n):
@@ -28,11 +30,16 @@ def add_fibonacci(fibonacci_list):
     return sum(fibonacci_list)
 
 if __name__ == "__main__":
+    import webbrowser
+
     # Input: how many terms to generate
     try:
         terms = int(input("Enter the number of terms in the Fibonacci sequence: "))
         if terms <= 0:
             print("Please enter a positive integer.")
+        elif terms % 2 != 0:
+            # Open a GIF of Anthony Edwards dunking a basketball if the number is odd
+            webbrowser.open("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDB3dmphdXNmN3Z0MjVodW1yOHYxNDVidTl1MXZyZDlvdXAyNnhtNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hTjzetNUv8La6OBm0D/giphy.gif")
         else:
             # Generate and display the Fibonacci sequence
             fibonacci_list = fibonacci(terms)
